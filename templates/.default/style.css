@@ -1,0 +1,97 @@
+.calc {
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #fff;
+    color: #444;
+}
+
+.feedback-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background-color: #ffffff;
+    display: none;
+    opacity: 0;
+}
+
+.feedback-form .form-control,
+.feedback-form .btn,
+.calc .form-control,
+.calc .btn {
+    border-radius: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.calc .service {
+    display: none;
+}
+.calc .info-service {
+    padding: 10px;
+}
+
+.calc .cart {
+    padding: 10px;
+}
+
+#reset {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: #444;
+    padding: 0 10px;
+    position: relative;
+    top: 2px;
+    transition: transform .3s ease-in;
+}
+
+#reset:hover {
+    transform: rotate(45deg);
+}
+
+.watchword {
+    text-align: center;
+    color: #444444;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 35px;
+    font-size: 1.2em;
+}
+
+.calculator-wrapper {
+    position: relative;
+}
+.notifications {
+    position: relative;
+    height: 15px;
+}
+
+.notifications > div {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.notifications .error {
+    color: #d9534f;
+}
+
+.notifications .success {
+    color: #2b542c;
+}
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.input-wrapper label {
+    position: absolute;
+    font-size: .8em;
+    top: 38px;
+    left: 2px;
+    color: #d9534f;
+}
