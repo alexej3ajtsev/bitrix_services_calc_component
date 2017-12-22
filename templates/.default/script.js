@@ -59,7 +59,10 @@ $(document).ready(function () {
                 servicesList += delimiter;
             servicesList += $(item).text().trim();
         });
-        console.log(b64EncodeUnicode(servicesList));
+
+        $('#servicesData').val(b64EncodeUnicode(servicesList));
+        $('#servicesCost').val($('#cost').text());
+        $('#calcSendForm').submit();
     });
 
     selServices.each(function (ind, item) {

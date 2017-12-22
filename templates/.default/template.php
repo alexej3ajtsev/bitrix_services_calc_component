@@ -3,7 +3,11 @@ use Bitrix\Main\Localization\Loc;
 if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
 ?>
 <?php
+
 dump($arParams);
+if (!empty($arResult['SUCCESS']))
+    dump($arResult['SUCCESS']);
+
 ?>
 
 <div class="errors-block">
@@ -73,6 +77,7 @@ dump($arParams);
             <h3 class="watchword"><?= Loc::getMessage('MAIN_CALC_WATCHWORD') ?></h3>
             <?= bitrix_sessid_post() ?>
             <input type="hidden" id="servicesData" name="servicesData" value="">
+            <input type="hidden" id="servicesCost" name="servicesCost" value="">
             <div class="input-wrapper">
                 <input type="text"
                        name="clientName"
