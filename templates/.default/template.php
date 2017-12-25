@@ -2,23 +2,18 @@
 use Bitrix\Main\Localization\Loc;
 if(!defined("B_PROLOG_INCLUDED")||B_PROLOG_INCLUDED!==true)die();
 ?>
-<?php
-
-dump($arParams);
-if (!empty($arResult['SUCCESS']))
-    dump($arResult['SUCCESS']);
-
-?>
-
-<div class="errors-block">
-<?php foreach($arResult['ERRORS'] as $error): ?>
-    <div class="error">
-        <?= $error ?>
-    </div>
-<?php endforeach; ?>
-</div>
-
 <div class="calculator-wrapper">
+    <?php if (!empty($arResult['SUCCESS'])) : ?>
+        <div class="success"><?= $arResult['SUCCESS'] ?></div>
+    <?php endif; ?>
+
+    <div class="errors-block">
+        <?php foreach($arResult['ERRORS'] as $error): ?>
+            <div class="error">
+                <?= $error ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
     <div class="calc" id="calc">
         <div class="notifications">
         </div>
@@ -65,7 +60,7 @@ if (!empty($arResult['SUCCESS']))
             </span>
         </div>
         <div class="row">
-            <ul class="selected-services">
+            <ul data-errmsg="Вы уже выбрали эту услугу" class="selected-services">
 
             </ul>
         </div>
@@ -87,7 +82,7 @@ if (!empty($arResult['SUCCESS']))
             </div>
 
             <div class="input-wrapper">
-                <input type="tel" name="clientTel" id="clientTel" class="required mobileRu form-control">
+                <input type="tel" name="clientTel" id="clientTel" placeholder="<?= Loc::getMessage('MAIN_CALC_PHONE_INPUT') ?>" class="required mobileRu form-control">
             </div>
 
             <button type="submit"

@@ -2,6 +2,7 @@
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\Loader;
 use Bitrix\Main\Context;
+use Bitrix\Main\Mail\Event;
 
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
@@ -123,27 +124,25 @@ class MainCalc extends CBitrixComponent
             "TIME"     => date('d.m.Y H:i', time()),
         ];
 
-        if (!CEvent::Send(
-            self::MAIN_CALC_TEMPLATE, // TODO : брать из настроек модуля
-            SITE_ID,
-            $arEventFields,
-            "Y",
-            self::MAIL_EVENT_ID // TODO : брать из настроек модуля
-        )) {
+        $sendResult = Event::send([
+            "LID" => SITE_ID,
+            "C_FIELDS" => $arEventFields,
+            "EVENT_NAME" => self::MAIN_CALC_TEMPLATE // TODO : брать из настроек модуля
+        ]);
+
+        if ($sendResult->isSuccess()) {
+            $this->arResult["SUCCESS"] = Loc::getMessage('MAIN_CALC_SUCCESS_MESSAGE');
+        } else {
             $this->addError(Loc::getMessage('MAIN_CALC_SEND_ERROR'));
         }
-
-        if (!$this->errorsIsset())
-            $this->arResult["SUCCESS"] = Loc::getMessage('MAIN_CALC_SUCCESS_MESSAGE');
-
     }
 
     public function executeComponent()
     {
+        $request = Context::getCurrent()->getRequest();
         $this->arResult['ERRORS'] = $this->getErrors();
         $this->arResult["CATEGORIES"] = [];
         $this->arResult['SERVICES'] = [];
-        $request = Context::getCurrent()->getRequest();
 
         if (!$this->errorsIsset()) {
             $this->fillData();

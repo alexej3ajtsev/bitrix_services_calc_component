@@ -1,5 +1,4 @@
 .calc {
-    margin-top: 30px;
     padding: 10px;
     background-color: #fff;
     color: #444;
@@ -22,6 +21,15 @@
     border-radius: 0;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.calculator-wrapper .btn-success {
+    background-color: #2fadb9;
+    border: 1px solid #2fadb9;
+}
+
+#addService {
+    background-color: #eee;
 }
 
 .calc .service {
@@ -71,16 +79,24 @@
     position: absolute;
     text-align: center;
     width: 100%;
-    top: 0;
+    top: -15px;
+    line-height: 18px;
     left: 0;
 }
 
-.notifications .error {
-    color: #d9534f;
+.selected-services li {
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.notifications .success {
+.calculator-wrapper .error {
+    color: #d9534f;
+    text-align: center;
+}
+
+.calculator-wrapper .success {
     color: #2b542c;
+    text-align: center;
 }
 
 .input-wrapper {
